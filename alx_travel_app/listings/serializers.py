@@ -3,7 +3,8 @@
 Serializers for the listings app
 """
 from rest_framework import serializers
-from .models import Listing, Booking
+from .models import Listing
+from bookings.models import Booking
 from users.serializers import UserDetailSerializer
 from addresses.serializers import AddressDetailSerializer
 from reviews.serializers import ReviewDetailSerializer
@@ -15,7 +16,7 @@ field_list = [
     'price',
     'bedrooms',
     'owner', # UserDetailSerializer
-    'address', # AddressDetailSerializer
+    'addresses', # AddressDetailSerializer
     'status',
     'reviews', # ReviewDetailSerializer
     'created_at',

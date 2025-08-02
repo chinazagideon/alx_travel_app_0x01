@@ -5,14 +5,14 @@ Serializers for the reviews app
 from rest_framework import serializers
 from .models import Review
 from users.serializers import UserDetailSerializer
-from listings.serializers import ListingDetailSerializer
+# from .serializers import ListingDetailSerializer
 
 class ReviewSerializer(serializers.ModelSerializer):
     """
     Serializer for the review
     """
     reviewer = UserDetailSerializer(read_only=True)
-    listing = ListingDetailSerializer(read_only=True)
+    listing = "listings.ListingDetailSerializer"
 
     def validate_rating(self, value):
         """
@@ -30,7 +30,9 @@ class ReviewDetailSerializer(serializers.ModelSerializer):
     Serializer for the review detail
     """
     reviewer = UserDetailSerializer(read_only=True)
-    listing = ListingDetailSerializer(read_only=True)
+    # listing = ListingDetailSerializer(read_only=True)
+    listing = "listings.ListingDetailSerializer"
+
 
     def validate_rating(self, value):
         """

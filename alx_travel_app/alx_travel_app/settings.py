@@ -14,6 +14,7 @@ from pathlib import Path
 import environ
 import os
 
+# from django.contrib.auth.models import User
 # Initialize environ
 env = environ.Env()
 
@@ -35,6 +36,9 @@ DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
+AUTH_BOOKINGS_MODEL = "bookings.Booking"
+AUTH_LISTING_MODEL= 'listings.Listing'
+AUTH_USER_MODEL= 'users.User'
 
 # Application definition
 
@@ -45,9 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'listings.app.ListingsConfig',
+    # 'bookings.app.BookingsConfig',
+
 
     'alx_travel_app',
     'rest_framework',
+    'drf_spectacular',
     'corsheaders',
     'listings',
     'reviews',
@@ -122,6 +130,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

@@ -17,9 +17,9 @@ class Listing(models.Model):
     """
     title = models.CharField(max_length=150, null=False, blank=False)
     description = models.TextField(blank=True)
-    owner_id = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    owner = models.ForeignKey('users.User', on_delete=models.CASCADE)
     price = models.IntegerField(null=False, blank=False)
-    address_id = models.ForeignKey('addresses.Address', on_delete=models.CASCADE)
+    addresses = models.ForeignKey('addresses.Address', on_delete=models.CASCADE)
     bedrooms = models.IntegerField(null=False, blank=False)
     status = models.CharField(max_length=100, choices=ListingStatus.choices, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
